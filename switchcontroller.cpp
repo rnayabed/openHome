@@ -2,6 +2,37 @@
 
 #include <QProcess>
 
+
+void SwitchController::configureOutput(const int& pin)
+{
+    QProcess process;
+
+    connect(&process, &QProcess::readyReadStandardOutput, this, [&process](){
+        qDebug() << process.readAllStandardOutput();
+    }, Qt::SingleShotConnection);
+
+    connect(&process, &QProcess::readyReadStandardError, this, [&process](){
+        qDebug() << process.readAllStandardError();
+    }, Qt::SingleShotConnection);
+
+    process.startDetached("raspi-gpio", QStringList() << "set" << QString::number(pin) << "op");
+}
+
+void SwitchController::setStatus(const int& pin, const bool& status)
+{
+    QProcess process;
+
+    connect(&process, &QProcess::readyReadStandardOutput, this, [&process](){
+        qDebug() << process.readAllStandardOutput();
+    }, Qt::SingleShotConnection);
+
+    connect(&process, &QProcess::readyReadStandardError, this, [&process](){
+        qDebug() << process.readAllStandardError();
+    }, Qt::SingleShotConnection);
+
+    process.startDetached("raspi-gpio", QStringList() << "set" << QString::number(pin) << (status ? "dl" : "dh"));
+}
+
 SwitchController::SwitchController(QObject *parent)
     : QObject{parent}
 {
@@ -20,19 +51,14 @@ raspi-gpio set 9 op
 
     QProcess process;
 
-    process.startDetached("raspi-gpio set 2 op");
-    process.startDetached("raspi-gpio set 3 op");
-    process.startDetached("raspi-gpio set 4 op");
-
-
-    process.startDetached("raspi-gpio set 17 op");
-    process.startDetached("raspi-gpio set 27 op");
-    process.startDetached("raspi-gpio set 22 op");
-
-
-    process.startDetached("raspi-gpio set 10 op");
-    process.startDetached("raspi-gpio set 9 op");
-    process.startDetached("raspi-gpio set 11 op");
+    configureOutput(2);
+    configureOutput(3);
+    configureOutput(4);
+    configureOutput(17);
+    configureOutput(27);
+    configureOutput(22);
+    configureOutput(10);
+    configureOutput(9);
 }
 
 const bool &SwitchController::switch1()
@@ -84,11 +110,7 @@ void SwitchController::setSwitch1(const bool &switch1)
 
     emit switch1Changed();
 
-    QProcess process;
-    if (m_switch1)
-        process.startDetached("raspi-gpio set 2 dl");
-    else
-        process.startDetached("raspi-gpio set 2 dh");
+    setStatus(2, m_switch1);
 }
 
 void SwitchController::setSwitch2(const bool &switch2)
@@ -100,11 +122,7 @@ void SwitchController::setSwitch2(const bool &switch2)
 
     emit switch2Changed();
 
-    QProcess process;
-    if (m_switch2)
-        process.startDetached("raspi-gpio set 3 dl");
-    else
-        process.startDetached("raspi-gpio set 3 dh");
+    setStatus(3, m_switch2);
 }
 
 void SwitchController::setSwitch3(const bool &switch3)
@@ -116,11 +134,7 @@ void SwitchController::setSwitch3(const bool &switch3)
 
     emit switch3Changed();
 
-    QProcess process;
-    if (m_switch3)
-        process.startDetached("raspi-gpio set 4 dl");
-    else
-        process.startDetached("raspi-gpio set 4 dh");
+    setStatus(4, m_switch3);
 }
 
 void SwitchController::setSwitch4(const bool &switch4)

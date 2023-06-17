@@ -60,6 +60,9 @@ private:
     bool m_switch7;
     bool m_switch8;
 
+    void configureOutput(const int& pin);
+    void setStatus(const int& pin, const bool& status);
+
 };
 
 #endif // SWITCHCONTROLLER_H
