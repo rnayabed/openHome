@@ -146,11 +146,7 @@ void SwitchController::setSwitch4(const bool &switch4)
 
     emit switch4Changed();
 
-    QProcess process;
-    if (m_switch4)
-        process.startDetached("raspi-gpio set 17 dl");
-    else
-        process.startDetached("raspi-gpio set 17 dh");
+    setStatus(17, m_switch4);
 }
 
 void SwitchController::setSwitch5(const bool &switch5)
@@ -162,11 +158,7 @@ void SwitchController::setSwitch5(const bool &switch5)
 
     emit switch5Changed();
 
-    QProcess process;
-    if (m_switch5)
-        process.startDetached("raspi-gpio set 27 dl");
-    else
-        process.startDetached("raspi-gpio set 27 dh");
+    setStatus(27, m_switch5);
 }
 
 void SwitchController::setSwitch6(const bool &switch6)
@@ -178,11 +170,7 @@ void SwitchController::setSwitch6(const bool &switch6)
 
     emit switch5Changed();
 
-    QProcess process;
-    if (m_switch6)
-        process.startDetached("raspi-gpio set 22 dl");
-    else
-        process.startDetached("raspi-gpio set 22 dh");
+    setStatus(22, m_switch6);
 }
 
 void SwitchController::setSwitch7(const bool &switch7)
@@ -194,11 +182,7 @@ void SwitchController::setSwitch7(const bool &switch7)
 
     emit switch5Changed();
 
-    QProcess process;
-    if (m_switch7)
-        process.startDetached("raspi-gpio set 10 dl");
-    else
-        process.startDetached("raspi-gpio set 10 dh");
+    setStatus(10, m_switch7);
 }
 
 
@@ -211,9 +195,5 @@ void SwitchController::setSwitch8(const bool &switch8)
 
     emit switch5Changed();
 
-    QProcess process;
-    if (m_switch8)
-        process.startDetached("raspi-gpio set 9 dl");
-    else
-        process.startDetached("raspi-gpio set 9 dh");
+    setStatus(9, m_switch8);
 }
