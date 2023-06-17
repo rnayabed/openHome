@@ -20,19 +20,19 @@ raspi-gpio set 9 op
 
     QProcess process;
 
-    process.startCommand("raspi-gpio set 2 op");
-    process.startCommand("raspi-gpio set 3 op");
-    process.startCommand("raspi-gpio set 4 op");
+    process.startDetached("raspi-gpio set 2 op");
+    process.startDetached("raspi-gpio set 3 op");
+    process.startDetached("raspi-gpio set 4 op");
 
 
-    process.startCommand("raspi-gpio set 17 op");
-    process.startCommand("raspi-gpio set 27 op");
-    process.startCommand("raspi-gpio set 22 op");
+    process.startDetached("raspi-gpio set 17 op");
+    process.startDetached("raspi-gpio set 27 op");
+    process.startDetached("raspi-gpio set 22 op");
 
 
-    process.startCommand("raspi-gpio set 10 op");
-    process.startCommand("raspi-gpio set 9 op");
-    process.startCommand("raspi-gpio set 11 op");
+    process.startDetached("raspi-gpio set 10 op");
+    process.startDetached("raspi-gpio set 9 op");
+    process.startDetached("raspi-gpio set 11 op");
 }
 
 const bool &SwitchController::switch1()
@@ -86,9 +86,9 @@ void SwitchController::setSwitch1(const bool &switch1)
 
     QProcess process;
     if (m_switch1)
-        process.startCommand("raspi-gpio set 2 dl");
+        process.startDetached("raspi-gpio set 2 dl");
     else
-        process.startCommand("raspi-gpio set 2 dh");
+        process.startDetached("raspi-gpio set 2 dh");
 }
 
 void SwitchController::setSwitch2(const bool &switch2)
@@ -102,9 +102,9 @@ void SwitchController::setSwitch2(const bool &switch2)
 
     QProcess process;
     if (m_switch2)
-        process.startCommand("raspi-gpio set 3 dl");
+        process.startDetached("raspi-gpio set 3 dl");
     else
-        process.startCommand("raspi-gpio set 3 dh");
+        process.startDetached("raspi-gpio set 3 dh");
 }
 
 void SwitchController::setSwitch3(const bool &switch3)
@@ -118,9 +118,9 @@ void SwitchController::setSwitch3(const bool &switch3)
 
     QProcess process;
     if (m_switch3)
-        process.startCommand("raspi-gpio set 4 dl");
+        process.startDetached("raspi-gpio set 4 dl");
     else
-        process.startCommand("raspi-gpio set 4 dh");
+        process.startDetached("raspi-gpio set 4 dh");
 }
 
 void SwitchController::setSwitch4(const bool &switch4)
@@ -134,9 +134,9 @@ void SwitchController::setSwitch4(const bool &switch4)
 
     QProcess process;
     if (m_switch4)
-        process.startCommand("raspi-gpio set 17 dl");
+        process.startDetached("raspi-gpio set 17 dl");
     else
-        process.startCommand("raspi-gpio set 17 dh");
+        process.startDetached("raspi-gpio set 17 dh");
 }
 
 void SwitchController::setSwitch5(const bool &switch5)
@@ -150,9 +150,9 @@ void SwitchController::setSwitch5(const bool &switch5)
 
     QProcess process;
     if (m_switch5)
-        process.startCommand("raspi-gpio set 27 dl");
+        process.startDetached("raspi-gpio set 27 dl");
     else
-        process.startCommand("raspi-gpio set 27 dh");
+        process.startDetached("raspi-gpio set 27 dh");
 }
 
 void SwitchController::setSwitch6(const bool &switch6)
@@ -166,9 +166,9 @@ void SwitchController::setSwitch6(const bool &switch6)
 
     QProcess process;
     if (m_switch6)
-        process.startCommand("raspi-gpio set 22 dl");
+        process.startDetached("raspi-gpio set 22 dl");
     else
-        process.startCommand("raspi-gpio set 22 dh");
+        process.startDetached("raspi-gpio set 22 dh");
 }
 
 void SwitchController::setSwitch7(const bool &switch7)
@@ -182,9 +182,9 @@ void SwitchController::setSwitch7(const bool &switch7)
 
     QProcess process;
     if (m_switch7)
-        process.startCommand("raspi-gpio set 10 dl");
+        process.startDetached("raspi-gpio set 10 dl");
     else
-        process.startCommand("raspi-gpio set 10 dh");
+        process.startDetached("raspi-gpio set 10 dh");
 }
 
 
@@ -199,7 +199,7 @@ void SwitchController::setSwitch8(const bool &switch8)
 
     QProcess process;
     if (m_switch8)
-        process.startCommand("raspi-gpio set 9 dl");
+        process.startDetached("raspi-gpio set 9 dl");
     else
-        process.startCommand("raspi-gpio set 9 dh");
+        process.startDetached("raspi-gpio set 9 dh");
 }
