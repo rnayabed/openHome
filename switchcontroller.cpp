@@ -17,19 +17,22 @@ raspi-gpio set 22 op
 raspi-gpio set 10 op
 raspi-gpio set 9 op
 */
-    QProcess::execute("raspi-gpio set 2 op");
-    QProcess::execute("raspi-gpio set 3 op");
-    QProcess::execute("raspi-gpio set 4 op");
+
+    QProcess process;
+
+    process.startCommand("raspi-gpio set 2 op");
+    process.startCommand("raspi-gpio set 3 op");
+    process.startCommand("raspi-gpio set 4 op");
 
 
-    QProcess::execute("raspi-gpio set 17 op");
-    QProcess::execute("raspi-gpio set 27 op");
-    QProcess::execute("raspi-gpio set 22 op");
+    process.startCommand("raspi-gpio set 17 op");
+    process.startCommand("raspi-gpio set 27 op");
+    process.startCommand("raspi-gpio set 22 op");
 
 
-    QProcess::execute("raspi-gpio set 10 op");
-    QProcess::execute("raspi-gpio set 9 op");
-    QProcess::execute("raspi-gpio set 11 op");
+    process.startCommand("raspi-gpio set 10 op");
+    process.startCommand("raspi-gpio set 9 op");
+    process.startCommand("raspi-gpio set 11 op");
 }
 
 const bool &SwitchController::switch1()
@@ -81,10 +84,11 @@ void SwitchController::setSwitch1(const bool &switch1)
 
     emit switch1Changed();
 
+    QProcess process;
     if (m_switch1)
-        QProcess::execute("raspi-gpio set 2 dl");
+        process.startCommand("raspi-gpio set 2 dl");
     else
-        QProcess::execute("raspi-gpio set 2 dh");
+        process.startCommand("raspi-gpio set 2 dh");
 }
 
 void SwitchController::setSwitch2(const bool &switch2)
@@ -96,10 +100,11 @@ void SwitchController::setSwitch2(const bool &switch2)
 
     emit switch2Changed();
 
+    QProcess process;
     if (m_switch2)
-        QProcess::execute("raspi-gpio set 3 dl");
+        process.startCommand("raspi-gpio set 3 dl");
     else
-        QProcess::execute("raspi-gpio set 3 dh");
+        process.startCommand("raspi-gpio set 3 dh");
 }
 
 void SwitchController::setSwitch3(const bool &switch3)
@@ -111,10 +116,11 @@ void SwitchController::setSwitch3(const bool &switch3)
 
     emit switch3Changed();
 
+    QProcess process;
     if (m_switch3)
-        QProcess::execute("raspi-gpio set 4 dl");
+        process.startCommand("raspi-gpio set 4 dl");
     else
-        QProcess::execute("raspi-gpio set 4 dh");
+        process.startCommand("raspi-gpio set 4 dh");
 }
 
 void SwitchController::setSwitch4(const bool &switch4)
@@ -126,10 +132,11 @@ void SwitchController::setSwitch4(const bool &switch4)
 
     emit switch4Changed();
 
+    QProcess process;
     if (m_switch4)
-        QProcess::execute("raspi-gpio set 17 dl");
+        process.startCommand("raspi-gpio set 17 dl");
     else
-        QProcess::execute("raspi-gpio set 17 dh");
+        process.startCommand("raspi-gpio set 17 dh");
 }
 
 void SwitchController::setSwitch5(const bool &switch5)
@@ -141,10 +148,11 @@ void SwitchController::setSwitch5(const bool &switch5)
 
     emit switch5Changed();
 
+    QProcess process;
     if (m_switch5)
-        QProcess::execute("raspi-gpio set 27 dl");
+        process.startCommand("raspi-gpio set 27 dl");
     else
-        QProcess::execute("raspi-gpio set 27 dh");
+        process.startCommand("raspi-gpio set 27 dh");
 }
 
 void SwitchController::setSwitch6(const bool &switch6)
@@ -156,10 +164,11 @@ void SwitchController::setSwitch6(const bool &switch6)
 
     emit switch5Changed();
 
+    QProcess process;
     if (m_switch6)
-        QProcess::execute("raspi-gpio set 22 dl");
+        process.startCommand("raspi-gpio set 22 dl");
     else
-        QProcess::execute("raspi-gpio set 22 dh");
+        process.startCommand("raspi-gpio set 22 dh");
 }
 
 void SwitchController::setSwitch7(const bool &switch7)
@@ -171,10 +180,11 @@ void SwitchController::setSwitch7(const bool &switch7)
 
     emit switch5Changed();
 
+    QProcess process;
     if (m_switch7)
-        QProcess::execute("raspi-gpio set 10 dl");
+        process.startCommand("raspi-gpio set 10 dl");
     else
-        QProcess::execute("raspi-gpio set 10 dh");
+        process.startCommand("raspi-gpio set 10 dh");
 }
 
 
@@ -187,8 +197,9 @@ void SwitchController::setSwitch8(const bool &switch8)
 
     emit switch5Changed();
 
+    QProcess process;
     if (m_switch8)
-        QProcess::execute("raspi-gpio set 9 dl");
+        process.startCommand("raspi-gpio set 9 dl");
     else
-        QProcess::execute("raspi-gpio set 9 dh");
+        process.startCommand("raspi-gpio set 9 dh");
 }
