@@ -105,7 +105,7 @@ Item {
 
             function configureColour() {
                 if (status) {
-                    animation.to = "#FCBB6D"
+                    animation.to = "#db7b44"
                 } else {
                     animation.to = "#475C7A"
                 }
