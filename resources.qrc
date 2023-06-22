@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
+        <file>HomeScreen.qml</file>
+    </qresource>
+    <qresource prefix="/openHome">
+        <file>test-wall.jpg</file>
+        <file>fonts/Lato-Regular.ttf</file>
     </qresource>
 </RCC>

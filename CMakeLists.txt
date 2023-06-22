@@ -4,6 +4,12 @@ project(openHome VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
 find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
 
 qt_standard_project_setup()
@@ -16,10 +22,18 @@ qt_add_executable(appopenHome
     resources.qrc
 )
 
+set_source_files_properties(GlobalProperties.qml PROPERTIES
+    QT_QML_SINGLETON_TYPE TRUE
+)
+
 qt_add_qml_module(appopenHome
     URI openHome
     VERSION 1.0
-    QML_FILES Main.qml
+    QML_FILES
+        Main.qml
+        LockScreen.qml
+        HomeScreen.qml
+        GlobalProperties.qml
 )
 
 set_target_properties(appopenHome PROPERTIES

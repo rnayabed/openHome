@@ -3,78 +3,160 @@ import QtQuick.Window
 
 import QtQuick.Controls
 import QtQuick.Controls.Material
+import Qt5Compat.GraphicalEffects
 
-Window {
+ApplicationWindow {
     width: 1024
     height: 600
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("OpenHome")
 
+    color: GlobalProperties.backgroundColour
 
-    Column {
-        anchors {
-            centerIn: parent
+    id: window
+
+    font: GlobalProperties.fontLoader.font
+
+    MultiPointTouchArea {
+        id: lockScreenTouch
+        anchors.fill: parent
+        touchPoints: [
+            TouchPoint { id: point1 }
+        ]
+
+        property bool enabled: true
+        property real startY: 0
+        onTouchUpdated: list => {
+                            if (!enabled) return
+                            if (point1.pressed) {
+                                if (startY == 0) {
+                                    startY = point1.y
+                                }
+
+                                lockScreen.y = (point1.y - startY)
+
+                                lockScreenAnimation.velocity= -1
+                            } else {
+                                if (lockScreen.y < -(window.height * 0.3) || point1.velocity.y <= -900) {
+                                    lockScreenAnimation.velocity = 1500
+                                    lockScreen.y = -(window.height)
+                                    enabled = false
+                                } else {
+                                    lockScreenAnimation.velocity = 500
+                                    lockScreen.y = 0;
+                                    startY = 0;
+                                }
+                            }
+                        }
         }
 
-        spacing: 30
-
-        Switch {
-            text: qsTr("Switch 1")
-
-            checked: switchController.switch1
-            onCheckedChanged: switchController.switch1 = checked
+    LockScreen {
+        z: 1
+        id: lockScreen
+        Component.onCompleted: {
+            height = window.height
+            width = window.width
         }
 
-        Switch {
-            text: qsTr("Switch 2")
+        Behavior on y { SmoothedAnimation { id: lockScreenAnimation;} }
+    }
 
-            checked: switchController.switch2
-            onCheckedChanged: switchController.switch2 = checked
-        }
-
-        Switch {
-            text: qsTr("Switch 3")
-
-            checked: switchController.switch3
-            onCheckedChanged: switchController.switch3 = checked
-        }
-
-        Switch {
-            text: qsTr("Switch 4")
-
-            checked: switchController.switch4
-            onCheckedChanged: switchController.switch4 = checked
-        }
-
-        Switch {
-            text: qsTr("Switch 5")
-
-            checked: switchController.switch5
-            onCheckedChanged: switchController.switch5 = checked
-        }
-
-        Switch {
-            text: qsTr("Switch 6")
-
-            checked: switchController.switch6
-            onCheckedChanged: switchController.switch6 = checked
-        }
-
-        Switch {
-            text: qsTr("Switch 7")
-
-            checked: switchController.switch7
-            onCheckedChanged: switchController.switch7 = checked
-        }
-
-        Switch {
-            text: qsTr("Switch 8")
-
-            checked: switchController.switch8
-            onCheckedChanged: switchController.switch8 = checked
-        }
-
+    HomeScreen {
 
     }
 
+  /*  Item {
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            margins: 20
+        }
+
+        height: window.height * 0.6
+
+        Item {
+            anchors {
+                left: parent.left
+                right: parent.horizontalCenter
+                top: parent.top
+                bottom: parent.bottom
+            }
+
+            Column {
+                anchors {
+                    top: parent.top
+                    left: parent.left
+                }
+
+                Label {
+                    color: GlobalProperties.fontColour
+                    text: qsTr("Good morning!");
+                    font.pixelSize: 40
+                }
+            }
+        }
+
+        Item {
+            id: timeAndWeather
+            anchors {
+                left: parent.horizontalCenter
+                right: parent.right
+                top: parent.top
+                bottom: parent.bottom
+            }
+
+
+            DropShadow {
+                anchors.fill: timeAndWeatherRect
+                horizontalOffset: 3
+                verticalOffset: 3
+                radius: 8.0
+                color: "blue"
+                source: timeAndWeatherRect
+            }
+
+            Rectangle {
+
+                id: timeAndWeatherRect
+                anchors.centerIn: parent
+
+                color: "red"
+
+                radius: 10
+
+                height: Math.max(col.implicitHeight, 200) + (col.anchors.margins * 2)
+                width: Math.max(col.implicitWidth, 200) + (col.anchors.margins * 2)
+
+                Column {
+                    id: col
+
+                    anchors {
+                        fill: parent
+                        margins: 20
+                    }
+
+                    spacing: 10
+                    Label {
+                        color: GlobalProperties.fontColour
+                        text: qsTr("10:12")
+                        font.pixelSize: 80
+                    }
+
+                    Label {
+                        color: GlobalProperties.fontColour
+                        text: qsTr("Sunday, 18 Jun")
+                        font.pixelSize: 25
+                    }
+
+                    Label {
+                        color: GlobalProperties.fontColour
+                        text: qsTr("33° C")
+                        font.pixelSize: 20
+                    }
+                }
+            }
+        }
+    }
+*/
 }
