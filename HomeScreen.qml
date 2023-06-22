@@ -86,11 +86,14 @@ Item {
                     enabled = false
                     testLightsToggle.status = !testLightsToggle.status
 
+                    switchController.switch1 = testLightsToggle.status
+
                     testLightsToggle.configureColour()
                 }
             }
 
             property bool status: false
+
 
             id: testLightsToggle
             anchors.centerIn: parent
