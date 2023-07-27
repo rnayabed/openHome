@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
         <file>HomeScreen.qml</file>
+        <file>ApplianceToggle.qml</file>
     </qresource>
     <qresource prefix="/openHome">
         <file>test-wall.jpg</file>

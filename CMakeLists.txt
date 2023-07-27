@@ -34,6 +34,7 @@ qt_add_qml_module(appopenHome
         LockScreen.qml
         HomeScreen.qml
         GlobalProperties.qml
+        ApplianceToggle.qml
 )
 
 set_target_properties(appopenHome PROPERTIES

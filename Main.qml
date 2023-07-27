@@ -24,7 +24,7 @@ ApplicationWindow {
             TouchPoint { id: point1 }
         ]
 
-        property bool enabled: false //true
+        property bool enabled: true //false //true
         property real startY: 0
         onTouchUpdated: list => {
                             if (!enabled) return
@@ -52,7 +52,7 @@ ApplicationWindow {
 
     LockScreen {
         z: 1
-        y:-(window.height)  // remove later
+        //y:-(window.height)  // remove later
         id: lockScreen
         Component.onCompleted: {
             height = window.height

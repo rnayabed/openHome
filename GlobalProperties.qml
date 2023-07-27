@@ -10,5 +10,4 @@ QtObject {
     property FontLoader fontLoader: FontLoader {
         source: "fonts/Lato-Regular.ttf"
     }
-
 }
