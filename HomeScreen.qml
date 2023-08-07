@@ -14,12 +14,14 @@ Item {
             margins: 20
         }
 
-        implicitHeight: Math.max(time.implicitHeight)
+        height: tabSelectorListView.height
 
         property int currentTabIndexSelected: 0
 
         ListView {
-            height: 100
+            id: tabSelectorListView
+
+            height: 60
             width: tabSelector.width - time.width - 10
 
             spacing: 30
@@ -30,30 +32,47 @@ Item {
             }
 
             model: ListModel {
-                ListElement { name: qsTr("Bed Room") }
+                ListElement { name: qsTr("Your Morning") }
                 ListElement { name: qsTr("Home Control") }
-                ListElement { name: qsTr("Media") }
-                ListElement { name: qsTr("Communicate") }
             }
 
             flickableDirection: Flickable.AutoFlickIfNeeded
 
-            delegate: Label {
-                text: name
-                font.pixelSize: 25
-                color: GlobalProperties.fontColour
-                opacity: (tabSelector.currentTabIndexSelected === index) ? 1.0 : 0.7
+            delegate: Item {
 
-                Behavior on opacity {
-                    NumberAnimation { duration: 200 }
-                }
+                height: col.implicitHeight
+                width: 200
 
-                MouseArea {
+
+                MouseArea{
                     anchors.fill: parent
                     onClicked: tabSelector.currentTabIndexSelected = index
                 }
-            }
 
+                Column {
+                    id: col
+                    opacity: (tabSelector.currentTabIndexSelected === index) ? 1.0 : 0.7
+
+                    Behavior on opacity {
+                        NumberAnimation { duration: 200 }
+                    }
+
+                    Label {
+                        text: name
+                        font.pixelSize: 25
+                        color: GlobalProperties.fontColour
+                    }
+
+                    spacing: 10
+
+                    Rectangle {
+                        height: 3
+                        width: 30
+                        radius: 3
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+            }
             orientation: ListView.Horizontal
         }
 
@@ -62,7 +81,7 @@ Item {
 
             anchors {
                 right: parent.right
-                verticalCenter: parent.verticalCenter
+                top: parent.top
             }
 
             text: qsTr("15:30")
@@ -82,6 +101,8 @@ Item {
             right: parent.right
             top: tabSelector.bottom
             bottom: parent.bottom
+
+            margins: 10
         }
 
         Item {
@@ -90,31 +111,7 @@ Item {
             }
         }
 
-        Item {
-            Label {
-                anchors.centerIn: parent
-                text: qsTr("Page 1")
-                font.pixelSize: 25
-                color: GlobalProperties.fontColour
-            }
-        }
-
-        Item {
-            Label {
-                anchors.centerIn: parent
-                text: qsTr("Page 2")
-                font.pixelSize: 25
-                color: GlobalProperties.fontColour
-            }
-        }
-
-        Item {
-            Label {
-                anchors.centerIn: parent
-                text: qsTr("Page 3")
-                font.pixelSize: 25
-                color: GlobalProperties.fontColour
-            }
+        RoomSelectorTab {
         }
     }
 }

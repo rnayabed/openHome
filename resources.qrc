@@ -3,7 +3,31 @@
         <file>qtquickcontrols2.conf</file>
         <file>HomeScreen.qml</file>
         <file>ApplianceToggle.qml</file>
+        <file>RoomSelectorTab.qml</file>
+        <file>Main.qml</file>
+        <file>LockScreen.qml</file>
+        <file>GlobalProperties.qml</file>
     </qresource>
+
+    <qresource prefix="/">
+        <file>icons/air_wave.svg</file>
+
+        <file>icons/bolt.svg</file>
+        <file>icons/event_note.svg</file>
+        <file>icons/fan.svg</file>
+        <file>icons/nights_stay.svg</file>
+
+        <file>icons/blinds_down.svg</file>
+        <file>icons/blinds_up.svg</file>
+
+        <file>icons/tv_off.svg</file>
+        <file>icons/tv_on.svg</file>
+
+        <file>icons/bulb_off.svg</file>
+        <file>icons/bulb_on.svg</file>
+
+    </qresource>
+
     <qresource prefix="/openHome">
         <file>test-wall.jpg</file>
         <file>fonts/Lato-Regular.ttf</file>

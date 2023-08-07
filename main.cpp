@@ -7,6 +7,7 @@
 #include <QFontDatabase>
 
 #include "switchcontroller.h"
+#include "roommodel.h"
 
 
 using namespace Qt::Literals::StringLiterals;
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     SwitchController switchController;
 
     QQmlApplicationEngine engine;
+    RoomModel testRoomModel;
 
    /* QDirIterator it(":", QDirIterator::Subdirectories);
     while (it.hasNext()) {
@@ -32,6 +34,7 @@ int main(int argc, char *argv[])
 
     engine.setContextForObject(&switchController, engine.rootContext());
     engine.rootContext()->setContextProperty(u"switchController"_s, &switchController);
+    engine.rootContext()->setContextProperty(u"testRoomModel"_s, &testRoomModel);
 
     engine.load(url);
 
