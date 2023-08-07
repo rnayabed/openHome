@@ -44,8 +44,8 @@ qt_add_qml_module(appopenHome
         icons.h icons.cpp
         room.h
         appliancetype.h
-        SOURCES appliance.cpp
-        SOURCES timecontroller.h timecontroller.cpp
+        appliance.cpp
+        timecontroller.h timecontroller.cpp
 )
 
 set_target_properties(appopenHome PROPERTIES
