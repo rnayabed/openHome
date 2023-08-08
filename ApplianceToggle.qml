@@ -72,7 +72,7 @@ Rectangle {
         verticalOffset: 0
         radius: 18.0
         samples: 20
-        color: "#475C7A"
+        color: toggle.color
     }
 
     Column {

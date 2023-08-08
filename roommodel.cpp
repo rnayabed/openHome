@@ -222,6 +222,7 @@ RoomModel::RoomModel()
     m_rooms << Room {"Living Room", livingRoom}
             << Room {"Bed Room", bedRoom}
             << Room {"Bathroom", bathRoom}
+            << Room {"Kitchen", kitchen}
             << Room {"Room 2", room2}
             << Room {"Room 3", room3}
             << Room {"Room 4", room4}
