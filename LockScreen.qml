@@ -1,50 +1,61 @@
 import QtQuick
 import QtQuick.Controls
+import Qt5Compat.GraphicalEffects
 
 Item {
-    Image {
-        anchors.fill: parent
+    anchors.fill: parent
 
-        source: "test-wall.jpg"
-        smooth: true
+    property alias clockRunning: clockTimer.running
 
-        fillMode: Image.PreserveAspectCrop
+    Timer {
+        id: clockTimer
+        interval: 1000; running: false; repeat: true
+        triggeredOnStart: true
+        onTriggered: parent.configureTime()
     }
 
-    Item {
+    property var locale: Qt.locale()
+    function configureTime() {
+        var d = new Date()
+        time.text = d.toLocaleTimeString(locale, Locale.ShortFormat)
+    }
+
+    Column {
         anchors {
-            left: parent.left
+            centerIn: parent
+        }
+
+        spacing: 20
+
+        Label {
+            id: time
+            font.pixelSize: 75
+            color: GlobalProperties.fontColour
+
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Label {
+            id: dateL
+            font.pixelSize: 40
+            color: GlobalProperties.fontColour
+            text: qsTr("Tuesday, August 8")
+
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+    }
+
+    Label {
+        anchors {
             bottom: parent.bottom
-            margins: 20
+            bottomMargin: 30
+            horizontalCenter: parent.horizontalCenter
         }
 
-        height: column.implicitHeight
-        width: column.implicitWidth
+        color: GlobalProperties.fontColour
 
-        Column {
-            id: column
-            anchors.fill: parent
+        text: qsTr("Swipe up to unlock")
 
-            spacing: 10
-
-            Label {
-                text: qsTr("15:30")
-                color: GlobalProperties.fontColour
-                font.pixelSize: 100
-                font.family: "Lato"
-            }
-
-            Label {
-                color: GlobalProperties.fontColour
-                text: qsTr("Sunday, 18 Jun")
-                font.pixelSize: 50
-            }
-
-            Label {
-                color: GlobalProperties.fontColour
-                text: qsTr("33° C")
-                font.pixelSize: 40
-            }
-        }
+        font.pixelSize: 18
     }
 }

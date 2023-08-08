@@ -16,11 +16,10 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-
-    SwitchController switchController;
+    RoomModel testRoomModel;
+    SwitchController::instance().init();
 
     QQmlApplicationEngine engine;
-    RoomModel testRoomModel;
 
    /* QDirIterator it(":", QDirIterator::Subdirectories);
     while (it.hasNext()) {
@@ -32,8 +31,7 @@ int main(int argc, char *argv[])
                      &app, []() { QCoreApplication::exit(-1); },
     Qt::QueuedConnection);
 
-    engine.setContextForObject(&switchController, engine.rootContext());
-    engine.rootContext()->setContextProperty(u"switchController"_s, &switchController);
+    engine.setContextForObject(&testRoomModel, engine.rootContext());
     engine.rootContext()->setContextProperty(u"testRoomModel"_s, &testRoomModel);
 
     engine.load(url);

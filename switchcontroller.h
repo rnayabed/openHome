@@ -7,13 +7,12 @@
 class SwitchController : public QObject
 {
     Q_OBJECT
-    QML_ELEMENT
-
 public:
     explicit SwitchController(QObject *parent = nullptr);
-
-public slots:
     void setStatus(const int& pin, const bool& status);
+    void init();
+
+    static SwitchController& instance();
 
 private:
     void configureOutput(const int& pin);

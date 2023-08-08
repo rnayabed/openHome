@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtQuick.Controls.Material
 import Qt5Compat.GraphicalEffects
 import QtQuick.Shapes
-import Qt.labs.lottieqt
 
 import openHome
 
@@ -38,10 +37,26 @@ Item {
             height: 50
             width: 150
 
-            opacity: (roomSelector.currentSelectedRoomIndex === index) ? 1.0 : 0.7
+            opacity: (roomSelector.currentSelectedRoomIndex === model.index) ? 1.0 : 0.6
 
             Behavior on opacity {
                 NumberAnimation { duration: 150 }
+            }
+
+            transform: Scale {
+                xScale: (roomSelector.currentSelectedRoomIndex === model.index) ? 1 : 0.8
+                yScale: (roomSelector.currentSelectedRoomIndex === model.index) ? 1 : 0.8
+
+                origin.x: 75
+                origin.y: 25
+
+                Behavior on yScale {
+                    NumberAnimation { duration: 150 }
+                }
+
+                Behavior on xScale {
+                    NumberAnimation { duration: 150 }
+                }
             }
 
             //color: "#4a69bd"
@@ -77,11 +92,11 @@ Item {
                 anchors.centerIn: parent
 
                 text: model.title
-                font.pixelSize: (roomSelector.currentSelectedRoomIndex === model.index) ? 20 : 18
+                //font.pixelSize: (roomSelector.currentSelectedRoomIndex === model.index) ? 20 : 18
 
-                Behavior on font.pixelSize {
-                    NumberAnimation { duration: 150 }
-                }
+                font.pixelSize: 20
+
+
 
                 color: GlobalProperties.fontColour
             }
@@ -140,6 +155,11 @@ Item {
                     onIcon: model.onIcon
                     staticIcon: model.staticIcon
                     type: model.type
+                    status: model.status
+
+                    onMouseAreaClicked: {
+                        applianceFlowRepeater.model.toggleAppliance(model.index)
+                    }
                 }
             }
         }

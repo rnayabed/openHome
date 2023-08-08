@@ -35,24 +35,20 @@ void SwitchController::setStatus(const int& pin, const bool& status)
 
 SwitchController::SwitchController(QObject *parent)
     : QObject{parent}
+{}
+
+void SwitchController::init()
 {
-    /*
-     * raspi-gpio set 2 op
-raspi-gpio set 3 op
-raspi-gpio set 4 op
-
-raspi-gpio set 17 op
-raspi-gpio set 27 op
-raspi-gpio set 22 op
-
-raspi-gpio set 10 op
-raspi-gpio set 9 op
-*/
-
     for (size_t i = 2; i <= 25; i++)
     {
         configureOutput(i);
         setStatus(i, false);
     }
+}
+
+SwitchController &SwitchController::instance()
+{
+    static SwitchController controller;
+    return controller;
 }
 

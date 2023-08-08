@@ -1,5 +1,6 @@
 #include <QList>
 #include "roommodel.h"
+#include "appliancemodel.h"
 
 RoomModel::RoomModel()
 {
@@ -7,15 +8,18 @@ RoomModel::RoomModel()
             QList{Appliance {
                     "TV",
                     Icons::TVOff,
-                    Icons::TVOn
+                    Icons::TVOn,
+                    2
                 }, Appliance {
                     "Lights",
                     Icons::BulbOff,
-                    Icons::BulbOn
+                    Icons::BulbOn,
+                    3
                 }, Appliance {
                     "Fan",
                     ApplianceType::Type::Rotate,
-                    Icons::Fan
+                    Icons::Fan,
+                    4
                 }}
         }};
 
@@ -25,7 +29,8 @@ RoomModel::RoomModel()
             QList{Appliance {
                     "TV2",
                     Icons::TVOff,
-                    Icons::TVOn
+                    Icons::TVOn,
+                    5
                 }}
         }};
 
@@ -35,7 +40,8 @@ RoomModel::RoomModel()
             QList{Appliance {
                     "Lights",
                     Icons::TVOff,
-                    Icons::TVOn
+                    Icons::TVOn,
+                    6
                 }}
         }};
 

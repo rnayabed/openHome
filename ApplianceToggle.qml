@@ -2,8 +2,6 @@ import QtQuick
 import Qt5Compat.GraphicalEffects
 import QtQuick.Controls
 
-import Qt.labs.lottieqt
-
 import openHome
 
 Rectangle {
@@ -11,17 +9,12 @@ Rectangle {
         id: toggleMouseArea
         anchors.fill:  parent
         onClicked: {
-
             enabled = false
-            toggle.status = !toggle.status
-
-            rotation.running = status && type === ApplianceType.Rotate
-
-       //     switchController.switch1 = toggle.status
-
-            toggle.configureColour()
+            mouseAreaClicked()
         }
     }
+
+    signal mouseAreaClicked()
 
     transform: Translate {
         id: translate
@@ -31,10 +24,13 @@ Rectangle {
     property alias translateX: translate.x
 
     property bool status: false
+    onStatusChanged: {
+        rotation.running = status && type === ApplianceType.Rotate
+        configureColour()
+    }
 
     property alias title: titleLabel.text
 
-    property int pin: -1
     property string offIcon: ""
     property string onIcon: ""
     property string staticIcon:  ""
@@ -69,9 +65,6 @@ Rectangle {
 
     height: 110
     width: 280
-
-   // height: col.implicitHeight + 50
-   // width: col.implicitWidth + 50
 
     layer.enabled: true
     layer.effect: DropShadow {

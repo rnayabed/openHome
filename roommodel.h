@@ -6,8 +6,6 @@
 #include <QQmlEngine>
 
 #include "room.h"
-#include "appliancemodel.h"
-#include "appliance.h"
 
 class RoomModel : public QAbstractListModel
 {
@@ -22,12 +20,7 @@ public:
 
     enum Roles {
         Title = Qt::UserRole + 1,
-        Type,
-        StaticIcon,
-        OnIcon,
-        OffIcon
     };
-
 private:
     QList<Room> m_rooms;
 };

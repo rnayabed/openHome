@@ -22,8 +22,12 @@ public:
         Type,
         StaticIcon,
         OnIcon,
-        OffIcon
+        OffIcon,
+        Status
     };
+
+public slots:
+    void toggleAppliance(const int& index);
 
 private:
     QList<Appliance> m_appliances;
