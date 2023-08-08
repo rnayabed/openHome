@@ -115,7 +115,7 @@ RoomModel::RoomModel()
                     Icons::None,
                     5
                 }, Appliance {
-                    "Microwave Oven",
+                    "Microwave",
                     ApplianceType::Type::Static,
                     Icons::None,
                     8
