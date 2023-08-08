@@ -90,7 +90,7 @@ Rectangle {
         Label {
             id: titleLabel
             color: GlobalProperties.fontColour
-            font.pixelSize: 40
+            font.pixelSize: text.length < 9 ? 40 : 35
         }
 
         Label {

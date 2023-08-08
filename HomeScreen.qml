@@ -27,7 +27,7 @@ Item {
             height: 60
             width: tabSelector.width - time.width - 10
 
-            spacing: 30
+            spacing: 15
 
             property string firstTabHeading: ""
 
@@ -139,8 +139,6 @@ Item {
             right: parent.right
             top: tabSelector.bottom
             bottom: parent.bottom
-
-            margins: 10
         }
 
         Item {
@@ -345,7 +343,13 @@ Item {
             }
         }
 
-        RoomSelectorTab {
+        Item {
+            RoomSelectorTab {
+                anchors {
+                    fill: parent
+                    margins: 20
+                }
+            }
         }
     }
 }

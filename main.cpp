@@ -16,10 +16,11 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    RoomModel testRoomModel;
-    SwitchController::instance().init();
 
     QQmlApplicationEngine engine;
+
+    RoomModel testRoomModel;
+    SwitchController::instance().init();
 
    /* QDirIterator it(":", QDirIterator::Subdirectories);
     while (it.hasNext()) {

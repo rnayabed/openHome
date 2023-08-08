@@ -12,21 +12,19 @@ Item {
 
         property int currentSelectedRoomIndex: 0
 
-        Component.onCompleted: applianceFlowRepeater.model = testRoomModel.getApplianceModel(0)
-
         anchors {
             top: parent.top
             right: parent.right
             left: parent.left
-            leftMargin: 120
         }
 
         height: 50
 
-        spacing: 50
+        spacing: 70
 
-        //temp
+        // TODO: Remove mock model
         model: testRoomModel
+        property bool isAssigned: false
 
         flickableDirection: Flickable.AutoFlickIfNeeded
 
@@ -35,7 +33,7 @@ Item {
         delegate: Rectangle {
 
             height: 50
-            width: 150
+            width: 160
 
             opacity: (roomSelector.currentSelectedRoomIndex === model.index) ? 1.0 : 0.6
 
@@ -44,10 +42,10 @@ Item {
             }
 
             transform: Scale {
-                xScale: (roomSelector.currentSelectedRoomIndex === model.index) ? 1 : 0.8
-                yScale: (roomSelector.currentSelectedRoomIndex === model.index) ? 1 : 0.8
+                xScale: (roomSelector.currentSelectedRoomIndex === model.index) ? 1 : 0.9
+                yScale: (roomSelector.currentSelectedRoomIndex === model.index) ? 1 : 0.9
 
-                origin.x: 75
+                origin.x: 80
                 origin.y: 25
 
                 Behavior on yScale {
@@ -59,7 +57,6 @@ Item {
                 }
             }
 
-            //color: "#4a69bd"
             radius: 5
 
             gradient: LinearGradient {
@@ -70,21 +67,27 @@ Item {
                 GradientStop { position: 0.6; color: "#54a0ff" }
             }
 
+            Component.onCompleted: {
+                if (!testRoomModel.isAssigned && model.index === 0) {
+                    applianceFlowRepeater.model = model.appModel
+                }
+            }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
                     roomSelector.currentSelectedRoomIndex = model.index
-                    applianceFlowRepeater.model = testRoomModel.getApplianceModel(model.index)
+                    applianceFlowRepeater.model = model.appModel
                 }
             }
 
-            layer.enabled: true
+            layer.enabled: (roomSelector.currentSelectedRoomIndex === model.index)
             layer.effect: DropShadow {
                 horizontalOffset: 0
                 verticalOffset: 10
                 radius: 14.0
                 samples: 20
-                color: "#4a69bd" // GlobalProperties.fontColour
+                color: "#4a69bd"
             }
 
             Label {
@@ -92,11 +95,8 @@ Item {
                 anchors.centerIn: parent
 
                 text: model.title
-                //font.pixelSize: (roomSelector.currentSelectedRoomIndex === model.index) ? 20 : 18
 
                 font.pixelSize: 20
-
-
 
                 color: GlobalProperties.fontColour
             }
@@ -106,6 +106,7 @@ Item {
     ScrollView {
         anchors {
             top: roomSelector.bottom
+            topMargin: 30
             left: parent.left
             right: parent.right
             bottom: parent.bottom
@@ -113,6 +114,7 @@ Item {
 
         contentWidth: width
         contentHeight: flow.implicitHeight
+
 
         Flow {
             padding: 30
@@ -129,18 +131,20 @@ Item {
                     }
                     PauseAnimation {
                         duration: (addTrans.ViewTransition.index -
-                                   addTrans.ViewTransition.targetIndexes[0]) * 100
+                                   addTrans.ViewTransition.targetIndexes[0]) * 50
                     }
                     ParallelAnimation {
                         NumberAnimation {
                             property: "opacity"
                             from: 0
                             to: 1
+                            duration: 100
                         }
                         NumberAnimation {
                             property: "translateX"
-                            from: 50
+                            from: 25
                             to: 0
+                            duration: 100
                         }
                     }
                 }

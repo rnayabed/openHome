@@ -20,6 +20,7 @@ public:
 
     enum Roles {
         Title = Qt::UserRole + 1,
+        Model
     };
 private:
     QList<Room> m_rooms;
