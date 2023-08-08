@@ -46,6 +46,7 @@ QHash<int, QByteArray> ApplianceModel::roleNames() const
 void ApplianceModel::toggleAppliance(const int &index)
 {
     m_appliances[index].toggle();
-    SwitchController::instance().setStatus(m_appliances[index].pin, m_appliances[index].status);
+    if (m_appliances[index].pin > -1)
+        SwitchController::instance().setStatus(m_appliances[index].pin, m_appliances[index].status);
     emit dataChanged(this->index(index), this->index(index));
 }

@@ -29,37 +29,37 @@ RoomModel::RoomModel()
                     "Test dev 1",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    50
+                    -1
                 }, Appliance {
                     "Test dev 2",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    51
+                    -1
                 }, Appliance {
                     "Test dev 3",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    52
+                    -1
                 }, Appliance {
                     "Test dev 4",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    52
+                    -1
                 }, Appliance {
                     "Test dev 5",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    52
+                    -1
                 }, Appliance {
                     "Test dev 6",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    52
+                    -1
                 }, Appliance {
                     "Test dev 7",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    52
+                    -1
                 }}
         }};
 
@@ -161,7 +161,7 @@ RoomModel::RoomModel()
                     "Fan",
                     ApplianceType::Type::Rotate,
                     Icons::Fan,
-                    23
+                    -1
                 }}
         }};
 
@@ -171,12 +171,12 @@ RoomModel::RoomModel()
                     "Lights",
                     Icons::BulbOff,
                     Icons::BulbOn,
-                    24
+                    -1
                 }, Appliance {
                     "Fan",
                     ApplianceType::Type::Rotate,
                     Icons::Fan,
-                    25
+                    -1
                 }}
         }};
 
@@ -185,22 +185,22 @@ RoomModel::RoomModel()
                     "Fan",
                     ApplianceType::Type::Rotate,
                     Icons::Fan,
-                    26
+                    -1
                 }, Appliance {
                     "Device 1",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    27
+                    -1
                 }, Appliance {
                     "Device 2",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    28
+                    -1
                 }, Appliance {
                     "Device 3",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    29
+                    -1
                 }}
         }};
 
@@ -209,12 +209,12 @@ RoomModel::RoomModel()
                     "Lights",
                     Icons::BulbOff,
                     Icons::BulbOn,
-                    30
+                    -1
                 }, Appliance {
                     "Device 1",
                     ApplianceType::Type::Static,
                     Icons::None,
-                    31
+                    -1
                 }}
         }};
 
